@@ -1,0 +1,6 @@
+# Corpus ingestion (steps 1-3) and model build (step 7).
+# CPU only, no GPU required.
+#
+#   pip install -r training/requirements.txt
+
+pypdf>=4.2.0

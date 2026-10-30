@@ -1,0 +1,42 @@
+﻿# Build output
+build/
+build-cmake/
+*.o
+*.obj
+*.exe
+!.gitkeep
+
+# Runtime state -- contains real accounts, password hashes, chat history and
+# live verification codes. Never commit, never ship.
+data/
+
+# Packaging
+ship/staging/
+ship/*.zip
+
+# Bundled inference engine and weights. Multi-gigabyte binaries do not belong
+# in version control; regenerate with:
+#   ship/fetch_runtime.ps1     (engine)
+#   ship/extract_models.ps1    (weights, from a local Ollama install)
+runtime/bin/
+runtime/models/*.gguf
+runtime/*.zip
+
+# Training artefacts (regenerate with the pipeline; often large)
+training/data/extracted/
+training/data/corpus.jsonl
+training/data/dataset/
+training/adapters/
+training/llama.cpp/
+training/Modelfile
+training/__pycache__/
+*.pyc
+
+# Source textbooks are licensed material belonging to whoever ingested them.
+training/data/textbooks/*
+!training/data/textbooks/sample_physics_notes.txt
+
+# Editors
+.vscode/
+.idea/
+*.swp

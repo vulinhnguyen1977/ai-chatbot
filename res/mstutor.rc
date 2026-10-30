@@ -1,0 +1,48 @@
+// mstutor.rc -- Windows resources: application icon and version metadata.
+//
+// Beyond looking finished, this matters for distribution. An executable with no
+// icon, no version information, no publisher and no signature is precisely the
+// profile Microsoft Defender's machine-learning heuristics flag (see the
+// "Antivirus warnings" section of README.md). Metadata does not replace a code
+// signing certificate, but a shipped product should carry it regardless.
+
+#include <windows.h>
+
+// The icon must come first so Explorer uses it as the application icon.
+IDI_APPICON ICON "mstutor.ico"
+
+#define VER_MAJOR 1
+#define VER_MINOR 0
+#define VER_PATCH 0
+#define VER_BUILD 0
+#define VER_STRING "1.0.0.0"
+
+VS_VERSION_INFO VERSIONINFO
+  FILEVERSION    VER_MAJOR, VER_MINOR, VER_PATCH, VER_BUILD
+  PRODUCTVERSION VER_MAJOR, VER_MINOR, VER_PATCH, VER_BUILD
+  FILEFLAGSMASK  VS_FFI_FILEFLAGSMASK
+  FILEFLAGS      0
+  FILEOS         VOS_NT_WINDOWS32
+  FILETYPE       VFT_APP
+  FILESUBTYPE    VFT2_UNKNOWN
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    // 0409 = US English, 04B0 = Unicode.
+    BLOCK "040904B0"
+    BEGIN
+      VALUE "CompanyName",      "Middle School Tutor"
+      VALUE "FileDescription",  "Middle School Maths & Physics Tutor"
+      VALUE "FileVersion",      VER_STRING
+      VALUE "InternalName",     "mstutor"
+      VALUE "OriginalFilename", "mstutor.exe"
+      VALUE "ProductName",      "Middle School Maths & Physics Tutor"
+      VALUE "ProductVersion",   VER_STRING
+      VALUE "Comments",         "Offline tutor for middle school mathematics and physics."
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x409, 1200
+  END
+END
