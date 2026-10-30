@@ -7,8 +7,9 @@ build-cmake/
 !.gitkeep
 
 # Runtime state -- contains real accounts, password hashes, chat history and
-# live verification codes. Never commit, never ship.
-data/
+# live verification codes. Never commit, never ship. Anchored to the root so it
+# does not also swallow training/data/ (whose contents have their own rules).
+/data/
 
 # Packaging
 ship/staging/

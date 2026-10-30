@@ -1,0 +1,4 @@
+# cmd.exe misparses labels and goto in batch files with LF-only line endings,
+# so batch files keep CRLF in every checkout and in GitHub's source zips.
+*.bat text eol=crlf
+*.cmd text eol=crlf

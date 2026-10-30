@@ -3,6 +3,10 @@
 Components redistributed in this project, and their licences. Review this
 before shipping to a client.
 
+The project's own code is MIT-licensed (see `LICENSE`). Full licence texts for
+the bundled engine and model weights are in `licenses/`, which `ship\package.ps1`
+always includes in the package.
+
 ## Vendored source (`third_party/`)
 
 | Component | Licence | Notes |
@@ -20,8 +24,9 @@ so redistributing `third_party/` satisfies both.
 |---|---|---|
 | [llama.cpp](https://github.com/ggml-org/llama.cpp) (`llama-server` and its DLLs) | MIT | Prebuilt Windows binaries from the project's own releases. Retain the copyright notice. |
 
-The MIT licence requires the notice to travel with the binaries. A copy of the
-llama.cpp LICENSE file should be kept in `runtime/bin/` when redistributing.
+The MIT licence requires the notice to travel with the binaries. The llama.cpp
+LICENSE (Copyright (c) 2023-2026 The ggml authors) is kept at
+`licenses/llama.cpp-LICENSE.txt` and ships in every package.
 
 ## Runtime dependencies (not redistributed)
 
@@ -35,16 +40,18 @@ llama.cpp LICENSE file should be kept in `runtime/bin/` when redistributing.
 Weights **are** included in the default package. That means redistributing
 someone else's model, and their licence governs:
 
-| Model | Licence | Redistributable |
-|---|---|---|
-| `qwen3-4b.gguf` | Apache-2.0 | Yes, with attribution |
-| `qwen3-1.7b.gguf` | Apache-2.0 | Yes, with attribution |
-| `nomic-embed-text.gguf` | Apache-2.0 | Yes, with attribution |
-| Llama-family models | Meta Llama Community License | Conditional — read it |
-| Gemma-family models | Gemma Terms of Use | Conditional — read it |
+| Model | Author | Licence | Redistributable |
+|---|---|---|---|
+| `qwen3-4b.gguf` | Qwen team, Alibaba Cloud | Apache-2.0 | Yes, with attribution |
+| `qwen3-1.7b.gguf` | Qwen team, Alibaba Cloud | Apache-2.0 | Yes, with attribution |
+| `nomic-embed-text.gguf` | Nomic AI | Apache-2.0 | Yes, with attribution |
+| Llama-family models | — | Meta Llama Community License | Conditional — read it |
+| Gemma-family models | — | Gemma Terms of Use | Conditional — read it |
 
 The bundled set is Apache-2.0 throughout, which permits redistribution provided
-attribution and the licence text are retained.
+attribution and the licence text are retained. The weights are redistributed
+unmodified (copied byte-for-byte from Ollama's published GGUF files); the
+licence text is at `licenses/Apache-2.0.txt`.
 
 **If you swap in a different model, re-check this table before packaging.**
 `ship\package.ps1 -NoModels` produces a package with no weights at all.

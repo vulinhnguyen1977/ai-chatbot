@@ -20,6 +20,11 @@
 .PARAMETER NoModels
   Exclude runtime/models/*.gguf. The engine is still included.
 
+.PARAMETER SkipModels
+  Exclude individual weight files by name, e.g. -SkipModels qwen3-4b.gguf.
+  GitHub release assets are capped at 2 GiB, so the public release ships the
+  Fast model in the zip and the Smart one separately (see get-smart-model.bat).
+
 .PARAMETER NoSource
   Exclude src/ and third_party/ for a binary-only delivery.
 
@@ -30,9 +35,11 @@
 .EXAMPLE
   powershell -ExecutionPolicy Bypass -File ship\package.ps1
   powershell -ExecutionPolicy Bypass -File ship\package.ps1 -NoModels -NoSource
+  powershell -ExecutionPolicy Bypass -File ship\package.ps1 -SkipModels qwen3-4b.gguf
 #>
 param(
   [switch]$NoModels,
+  [string[]]$SkipModels = @(),
   [switch]$NoSource,
   [switch]$CpuOnly
 )
@@ -62,13 +69,16 @@ if (Test-Path $staging) { Remove-Item $staging -Recurse -Force }
 New-Item -ItemType Directory -Path $staging -Force | Out-Null
 
 $files = @("mstutor.exe", "README.md", "THIRD_PARTY_NOTICES.md", "LICENSE",
-           "start.bat", "build.bat", "CMakeLists.txt", "Makefile")
+           "start.bat", "build.bat", "CMakeLists.txt", "Makefile",
+           "get-smart-model.bat")
 foreach ($f in $files) {
   $p = Join-Path $root $f
   if (Test-Path $p) { Copy-Item $p -Destination $staging }
 }
 
-$dirs = @("config", "training")
+# licenses/ holds the llama.cpp and Apache-2.0 texts that must travel with the
+# bundled engine and weights, so it ships even in a binary-only package.
+$dirs = @("config", "training", "licenses")
 # res/ holds the icon and version resource, so it is part of the source build.
 if (-not $NoSource) { $dirs += @("src", "third_party", "res") }
 
@@ -109,9 +119,13 @@ Weights can be produced from an Ollama install with ship\extract_models.ps1, or
 downloaded from Hugging Face in GGUF format.
 "@
 } else {
-  $models = Get-ChildItem (Join-Path $runtimeSrc "models") -Filter *.gguf -ErrorAction SilentlyContinue
+  $models = Get-ChildItem (Join-Path $runtimeSrc "models") -Filter *.gguf -ErrorAction SilentlyContinue |
+            Where-Object { $SkipModels -notcontains $_.Name }
   if (-not $models) {
     throw "No .gguf files in runtime\models. Run ship\extract_models.ps1, or pass -NoModels."
+  }
+  foreach ($s in $SkipModels) {
+    Write-Host "  - runtime\models\$s (excluded by -SkipModels)" -ForegroundColor Yellow
   }
   foreach ($m in $models) {
     Write-Host ("  + runtime\models\{0} ({1:N0} MB)" -f $m.Name, ($m.Length / 1MB))

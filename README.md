@@ -15,9 +15,16 @@ homework in other subjects.
 
 ## Getting started
 
-1. Unzip anywhere you like (Desktop, Documents, a USB stick).
-2. Double-click **`mstutor.exe`**.
-3. Create an account. You will be asked for a 6-digit code.
+1. Download **`mstutor-v0.1.0-windows-x64.zip`** from the
+   [latest release](https://github.com/vulinhnguyen1977/ai-chatbot/releases/latest).
+2. Unzip anywhere you like (Desktop, Documents, a USB stick).
+3. Double-click **`mstutor.exe`**.
+4. Create an account. You will be asked for a 6-digit code.
+
+The zip includes the **Fast** model. For the slower but more reliable **Smart**
+model, double-click **`get-smart-model.bat`** in the same folder (a 2.5 GB
+download, which GitHub's 2 GB file limit keeps out of the zip) and restart the
+app. See [Answer style](#answer-style-fast-or-smart).
 
 **About that code:** by default the app does not send real email. It writes the
 message to `data\outbox\` instead, so the whole flow works before any mailbox is
@@ -364,6 +371,7 @@ Produces `ship\mstutor-<date>.zip`, self-contained. Useful switches:
 | Switch | Effect |
 |---|---|
 | `-NoModels` | Leave out the weights (small update package) |
+| `-SkipModels <file>` | Leave out named weights, e.g. `qwen3-4b.gguf` for the GitHub release |
 | `-CpuOnly` | Leave out the Vulkan engine (~90 MB smaller) |
 | `-NoSource` | Binary-only delivery |
 
@@ -454,8 +462,10 @@ src/
   tls_socket.cpp   TLS via Windows Schannel
   selftest.cpp     built-in checks
 config/          configuration
+licenses/        licence texts for the bundled engine and weights
 training/        corpus ingestion and fine-tuning pipeline
 ship/            packaging
+get-smart-model.bat  downloads the optional Smart model
 data/            accounts, chats, outbox (created on first run, never shipped)
 ```
 
@@ -482,3 +492,13 @@ strict. Add the vocabulary to `kMathTerms` or `kPhysicsTerms` in
 **Maths still looks wrong** — the normaliser handles the common LaTeX. If you
 find a construct it misses, add it to `kSymbols` or `kTransparentCommands` in
 `src\markdown.cpp` and add a case to `test_markdown()` in `selftest.cpp`.
+
+---
+
+## License
+
+The code in this repository is released under the [MIT License](LICENSE).
+Bundled third-party components keep their own licences — llama.cpp (MIT),
+SQLite (public domain), cpp-httplib and nlohmann/json (MIT), and the Qwen3 and
+nomic-embed-text weights (Apache-2.0). See
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [licenses/](licenses/).

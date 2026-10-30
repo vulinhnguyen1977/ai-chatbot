@@ -1,0 +1,76 @@
+Chapter 4: Speed, Velocity and Acceleration
+
+Speed tells us how much distance an object covers in a given time. To calculate
+the average speed of an object, divide the total distance travelled by the total
+time taken. The formula is speed = distance / time. Distance is measured in
+metres and time in seconds, so speed is measured in metres per second, written
+m/s. A cyclist who travels 100 metres in 20 seconds has an average speed of
+100 / 20 = 5 m/s. Notice that this is an average: the cyclist may have been
+faster at some moments and slower at others.
+
+Velocity is speed in a stated direction. Two cars travelling at 30 m/s in
+opposite directions have the same speed but different velocities. Because
+velocity includes direction, a change of direction is a change of velocity even
+when the speed stays the same.
+
+Acceleration measures how quickly velocity changes. Acceleration equals the
+change in velocity divided by the time taken for that change. Written as a
+formula, acceleration = (final velocity - initial velocity) / time. The units
+are metres per second squared, written m/s^2. If a car speeds up from 5 m/s to
+25 m/s in 4 seconds, the change in velocity is 20 m/s, and the acceleration is
+20 / 4 = 5 m/s^2. When an object slows down, the acceleration is negative and we
+often call it deceleration.
+
+Distance-time graphs show distance on the vertical axis and time on the
+horizontal axis. The gradient of a distance-time graph gives the speed. A
+horizontal line means the object is stationary, because the distance is not
+changing. A straight sloping line means constant speed, and a curved line means
+the speed is changing.
+
+Chapter 5: Forces and Motion
+
+A force is a push or a pull. Forces are measured in newtons, written N. When
+several forces act on an object we add them together, taking direction into
+account, to find the resultant force. If the forces on an object are balanced,
+the resultant force is zero and the object either stays still or keeps moving at
+a constant velocity. If the forces are unbalanced, the object accelerates in the
+direction of the resultant force.
+
+Weight is the force of gravity acting on an object. Weight is calculated as
+weight = mass x gravitational field strength. On Earth the gravitational field
+strength is about 10 newtons per kilogram, so a 3 kg bag has a weight of
+3 x 10 = 30 N. Mass is a measure of how much matter an object contains and is
+measured in kilograms; it does not change when the object is taken to the Moon,
+but its weight does because the gravitational field strength there is weaker.
+
+Friction is a force that opposes motion between two surfaces that are touching.
+Friction always acts in the opposite direction to the movement. Air resistance is
+a form of friction caused by an object moving through air. When a falling object
+speeds up, the air resistance on it increases until it balances the weight. At
+that point the resultant force is zero, the object stops accelerating, and it
+falls at a steady speed called the terminal velocity.
+
+Chapter 9: Electric Circuits
+
+An electric current is a flow of charge. Current is measured in amperes, often
+shortened to amps and written A. Voltage, also called potential difference, is a
+measure of the energy given to the charge and is measured in volts, written V.
+Resistance opposes the flow of current and is measured in ohms.
+
+Ohm's law states that voltage = current x resistance, usually written V = I x R.
+If a resistor of 4 ohms carries a current of 3 A, the voltage across it is
+3 x 4 = 12 V. Rearranging the formula lets us find any one of the three
+quantities when the other two are known: current = voltage / resistance, and
+resistance = voltage / current.
+
+In a series circuit the components are connected one after another in a single
+loop. The current is the same at every point in a series circuit, and the total
+voltage of the supply is shared between the components. The total resistance of
+resistors in series is found by adding them together.
+
+In a parallel circuit the components are connected across each other so that
+there is more than one path for the current. Each branch of a parallel circuit
+has the full supply voltage across it, and the current divides between the
+branches. This is why two identical bulbs are brighter in parallel than in
+series: in parallel each bulb receives the full voltage, whereas in series they
+share it.
